@@ -139,7 +139,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `text`
 
-Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
+Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `textDecoration`.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -173,7 +173,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `image`
 
-Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
+Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `filters`.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -215,7 +215,7 @@ Origin: top-left. Does not extend BaseElement (no fill/stroke); `children` are e
 
 ## `qrcode`
 
-Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
+Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `logoSrc`, `logoSize`, `logoPadding`.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|

@@ -1,6 +1,6 @@
 # Zandovi skills
 
-Authoring knowledge for designing [Zandovi](https://zandovi.com) templates (coupons, gift cards, invitations, certificates, tickets, social graphics) as an agent skill: the element schema, coordinate origins, fonts, icons, variables and z-order. The skill's validate → preview → create workflow names MCP tools and API endpoints (`validate_design`, `preview_design`, `create_template`, `POST /api/v1/designs/*`) that are **not yet available**; they are planned for a later release, and today the skill ends with canvasData JSON that a person saves from the Zandovi editor.
+Authoring knowledge for designing [Zandovi](https://zandovi.com) templates (coupons, gift cards, invitations, certificates, tickets, social graphics) as an agent skill: the element schema, canvas size presets, coordinate origins, fonts, icons, variables, z-order and every validation code. The skill's validate → preview → create workflow uses the MCP tools (`validate_design`, `preview_design`, `create_template`) or the REST endpoints (`POST /api/v1/designs/validate`, `POST /api/v1/designs/render`, `POST /api/v1/templates`); without either it ends with canvasData JSON that a person saves from the Zandovi editor. `edit_template`, stock-image search and image upload are not yet available.
 
 ## `zandovi-template-authoring`
 
