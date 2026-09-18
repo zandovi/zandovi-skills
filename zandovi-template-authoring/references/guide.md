@@ -17,7 +17,7 @@ Most elements use top-left origin: `x, y` is the top-left corner, so the element
 - Text alignment is `align`, not `textAlign`; wrapping is `wrap: "word" | "char" | "none"`, not `wordWrap`; dashes are `dash`, not `dashArray`; arrows use `pointerLength`.
 - Every `BaseElement` field is required on every element except `group`: `id, x, y, width, height, rotation, opacity, fill, stroke, strokeWidth, draggable, visible, locked`. Use `rotation: 0`, `opacity: 1`, `stroke: "transparent"`, `strokeWidth: 0` when unused.
 - `cornerRadius` is required on `rectangle`, `image` and `curvedRectangle`; `radius` on `circle`; `innerRadius` + `outerRadius` on `star` (no `radius`); `variant` on `triangle` (no radius fields).
-- Colours must be parseable CSS colours; gradients on element fills use pixel coordinates relative to the element, background gradients use 0..1. An unknown field or a wrong type is a `SCHEMA_VIOLATION` at the path it names.
+- Colours must be parseable CSS colours. Gradients use normalised 0..1 coordinates on both element fills and backgrounds (fractions of the element's or canvas's bounding box, never pixels). An unknown field or a wrong type is a `SCHEMA_VIOLATION` at the path it names.
 
 ## Text
 
@@ -28,7 +28,7 @@ Most elements use top-left origin: `x, y` is the top-left corner, so the element
 
 ## Variables
 
-A variable element needs **both** `isVariable: true` **and** `defaultValue` (text, `qrcode`, `barcode`). `variableName` alone is inert. The canvas and the API read `defaultValue`, not `text`; keep `text` equal to `defaultValue`. Names match `^[A-Za-z_][A-Za-z0-9_]{0,63}$` and one name must not be reused with a different type. Image variables use `isPlaceholder: true` plus `variableName`; the value supplied at render time replaces `src`.
+A variable element needs **both** `isVariable: true` **and** `defaultValue` (text, `qrcode`, `barcode`). `variableName` alone is inert. The canvas and the API read `defaultValue`, not `text`; keep `text` equal to `defaultValue`. Names match `^[A-Za-z_][A-Za-z0-9_]{0,63}$` and one name must not be reused with a different type. Image variables use `isPlaceholder: true` plus `variableName`; the value supplied at render time replaces `src`. `derivedSchema` types are `text | qrcode | barcode | image`; render-time values are always strings.
 
 ## Fonts and icons
 
@@ -46,7 +46,7 @@ A public `https://` image is fetched separately at preview (for the thumbnail) a
 
 ## QR codes and barcodes
 
-`qrcode.data` must not be blank unless it is a variable. `logoSrc`, `logoSize` and `logoPadding` are accepted by the schema but ignored by the renderer. `barcode.data` must satisfy `format`: EAN13 = 13 digits, UPC = 12, ITF14 = 14, CODE39 = its character set; a variable barcode is checked at render time.
+`qrcode.data` must not be blank unless it is a variable. `logoSrc`, `logoSize` and `logoPadding` are accepted by the schema but ignored by the renderer. `barcode.data` must satisfy `format`: EAN13 = 13 digits, UPC = 12, ITF14 = 14, CODE39 = its character set; a variable barcode's `defaultValue` is checked the same way, then the render-time value.
 
 ## Workflow and tools
 
@@ -80,7 +80,7 @@ Tools in this release: `get_account`, `list_projects`, `list_templates`, `get_te
 | `VARIABLE_MISSING_DEFAULT` | error | A variable element has no defaultValue, or it is blank; the default is what renders when no value is supplied. |
 | `VARIABLE_CONFLICT` | error | The same variableName is used on two elements of different type or with different validation rules. |
 | `QR_DATA_EMPTY` | error | A non-variable qrcode has blank data. |
-| `BARCODE_PAYLOAD_INVALID` | error | A non-variable barcode's payload does not fit its format (EAN13 13 digits, UPC 12, ITF14 14, CODE39 charset). |
+| `BARCODE_PAYLOAD_INVALID` | error | A barcode's payload (data, or defaultValue for a variable barcode) does not fit its format (EAN13 13 digits, UPC 12, ITF14 14, CODE39 charset). |
 | `IMAGE_SRC_MISSING` | error | An image has a blank src and is not a placeholder (isPlaceholder: true). |
 | `IMAGE_NOT_OWNED` | error | A zandovi://images/{id} reference is not visible to this organization and account (missing, another org's, or private to another member). |
 | `FONT_WEIGHT_NOT_AVAILABLE` | warning | fontWeight is not offered by the font family; the renderer substitutes the nearest weight. |

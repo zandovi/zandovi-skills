@@ -40,6 +40,8 @@ Element types: `rectangle`, `circle`, `ellipse`, `line`, `arrow`, `star`, `polyg
 
 ## `rectangle`
 
+Axis-aligned rectangle with optional rounded corners; the workhorse for panels, backing shapes and dividers.
+
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
@@ -48,6 +50,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `cornerRadius` | number | yes | >= 0 |
 
 ## `circle`
+
+Circle centred on x,y with radius = width / 2; use for badges, dots and avatar masks.
 
 Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -58,6 +62,8 @@ Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields
 
 ## `ellipse`
 
+Ellipse centred on x,y with radiusX = width / 2 and radiusY = height / 2; a stretched circle.
+
 Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
@@ -67,6 +73,8 @@ Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields
 | `radiusY` | number | yes | >= 0 |
 
 ## `line`
+
+Straight or polyline stroke through points (relative to x,y); height is normally 0 and colour comes from stroke.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -79,6 +87,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `dash` | number[] | yes |  |
 
 ## `arrow`
+
+Line with an arrowhead at its last point; pointerLength and pointerWidth size the head.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -94,26 +104,32 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `star`
 
+Star centred on x,y with numPoints tips between outerRadius and innerRadius; for a regular N-gon use polygon.
+
 Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `type` | star | yes |  |
 | `numPoints` | integer | yes | 3..100 |
-| `innerRadius` | number | yes | >= 0 |
-| `outerRadius` | number | yes | >= 0 |
+| `innerRadius` | number | yes | >= 0; distance of the inner vertices from the centre; equal radii give a regular 2N-gon; for a regular N-gon use polygon. |
+| `outerRadius` | number | yes | >= 0; distance of the tips from the centre, normally width / 2; equal radii give a regular 2N-gon; for a regular N-gon use polygon. |
 
 ## `polygon`
+
+Regular N-gon centred on x,y with sides vertices on a circle of radius; use for hexagons, octagons and similar.
 
 Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `type` | polygon | yes |  |
-| `sides` | integer | yes | 3..100 |
+| `sides` | integer | yes | 3..100; regular N-gon; hexagon = 6, octagon = 8. |
 | `radius` | number | yes | >= 0 |
 
 ## `triangle`
+
+Triangle centred on x,y filling the width by height box; variant picks the shape, points overrides it.
 
 Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -125,6 +141,8 @@ Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields
 | `points` | number[] | no | exactly 6 items |
 
 ## `curvedRectangle`
+
+Rectangle with one side bowed inward or outward by curveDepth; use for ticket stubs and wave dividers.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -138,6 +156,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `cornerRadius` | number | yes | >= 0 |
 
 ## `text`
+
+Text block wrapped inside width by height; fontFamily must be a bundled family and fill gives its colour.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `textDecoration`.
 
@@ -173,6 +193,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `image`
 
+Raster image from src fitted into width by height; isPlaceholder marks an image variable replaced at render time.
+
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `filters`.
 
 | Field | Type | Required | Notes |
@@ -189,6 +211,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `validation` | ImageValidation | no |  |
 
 ## `group`
+
+Container whose children are positioned relative to its x,y; it has no fill or stroke of its own.
 
 Origin: top-left. Does not extend BaseElement (no fill/stroke); `children` are elements positioned relative to the group. unsupportedFields: none.
 
@@ -215,6 +239,8 @@ Origin: top-left. Does not extend BaseElement (no fill/stroke); `children` are e
 
 ## `qrcode`
 
+QR code encoding data (or the variable value) in darkColor on lightColor; keep it square.
+
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `logoSrc`, `logoSize`, `logoPadding`.
 
 | Field | Type | Required | Notes |
@@ -235,6 +261,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `barcode`
 
+1D barcode of data in the given format with optional human-readable text; data must fit the format.
+
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
@@ -248,7 +276,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `textAlign` | left \| center \| right | yes |  |
 | `textPosition` | top \| bottom | yes |  |
 | `fontSize` | number | yes | >= 1 |
-| `fontFamily` | string | yes |  |
+| `fontFamily` | string | yes | generic CSS family such as monospace or sans-serif for the human-readable text; not checked against the bundled fonts. |
 | `barWidth` | number | yes | >= 1 |
 | `isVariable` | boolean \| null | no |  |
 | `variableName` | string \| null | no |  |
@@ -257,6 +285,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `fontSlug` | string \| null | no | Stable directory-based font identifier (e.g. 'open-sans'). Optional; used alongside fontFamily for unambiguous font resolution. |
 
 ## `icon`
+
+Lucide icon named by iconName, drawn as strokes in iconColor and scaled to width by height.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -271,6 +301,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ### `ViewportConfig`
 
+Design-space size in 96-DPI pixels plus unit, exportDpi and outputIntent; copy a preset rather than guessing.
+
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `width` | integer | yes | 100..4096 |
@@ -280,6 +312,8 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `outputIntent` | screen \| print | no | default "screen" |
 
 ### `BackgroundConfig`
+
+The canvas backdrop painted before every element: a solid colour, a gradient or an image with optional overlay.
 
 One of: `SolidBackground`, `GradientBackground`, `ImageBackground` (discriminated by `type`).
 
@@ -309,6 +343,8 @@ One of: `SolidBackground`, `GradientBackground`, `ImageBackground` (discriminate
 
 ### `FillConfig`
 
+Paint for an element or background gradient: solid colour, linear gradient or radial gradient; gradient points are 0..1 fractions.
+
 One of: `SolidFill`, `LinearGradientFill`, `RadialGradientFill` (discriminated by `type`).
 
 ### `SolidFill`
@@ -324,8 +360,8 @@ One of: `SolidFill`, `LinearGradientFill`, `RadialGradientFill` (discriminated b
 |---|---|---|---|
 | `type` | linear | yes |  |
 | `colorStops` | GradientColorStop[] | yes |  |
-| `startPoint` | Point2D | yes |  |
-| `endPoint` | Point2D | yes |  |
+| `startPoint` | Point2D | yes | normalised 0..1 fractions of the painted box (element or canvas), not pixels; {x: 0, y: 0} is its top-left corner, {x: 1, y: 1} its bottom-right. |
+| `endPoint` | Point2D | yes | normalised 0..1 fractions of the painted box, like startPoint; a top-to-bottom gradient runs from {x: 0, y: 0} to {x: 0, y: 1}. |
 
 ### `RadialGradientFill`
 
@@ -333,8 +369,8 @@ One of: `SolidFill`, `LinearGradientFill`, `RadialGradientFill` (discriminated b
 |---|---|---|---|
 | `type` | radial | yes |  |
 | `colorStops` | GradientColorStop[] | yes |  |
-| `centerPoint` | Point2D | yes |  |
-| `radius` | number | yes |  |
+| `centerPoint` | Point2D | yes | normalised 0..1 fractions of the painted box (element or canvas); {x: 0.5, y: 0.5} is its centre. |
+| `radius` | number | yes | 0..1 fraction of the larger of the painted box's width and height, not pixels; 0.5 from the centre reaches the edge along the longer side. |
 
 ### `GradientColorStop`
 
