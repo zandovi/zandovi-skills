@@ -71,6 +71,8 @@ Tools in this release: `get_account`, `list_projects`, `list_templates`, `get_te
 | `ELEMENT_OFF_CANVAS` | error | A visible element's bounding box (centre-origin aware) lies entirely outside the viewport. |
 | `VARIABLE_ELEMENT_OCCLUDED` | error | A variable-bearing element is fully covered by a later opaque, unrotated rectangle or image, so its value would never show. |
 | `FONT_NOT_AVAILABLE` | error | fontFamily is not one of the bundled fonts; the hint lists the closest available names. |
+| `GLYPH_FALLBACK` | warning | A character in text/defaultValue is not covered by fontFamily but is covered by the fallback chain, which draws it instead. |
+| `GLYPH_MISSING` | warning | A character in text/defaultValue is covered by neither fontFamily nor the fallback chain and renders as a missing-glyph box. |
 | `ICON_NOT_FOUND` | error | iconName is not one of the bundled Lucide icons; the hint lists the closest available names. |
 | `COLOR_INVALID` | error | A fill, stroke, color, shadowColor or gradient stop is not a parseable CSS colour (#rgb, #rrggbb, #rrggbbaa, rgb(), rgba(), hsl(), hsla(), transparent or a named colour). |
 | `VARIABLE_NAME_INVALID` | error | variableName must match ^[A-Za-z_][A-Za-z0-9_]{0,63}$. |

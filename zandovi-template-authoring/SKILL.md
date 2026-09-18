@@ -14,9 +14,9 @@ You are writing a Zandovi template: a `canvasData` JSON document (`schemaVersion
 Read `references/guide.md` before every design; open the others when the step needs them.
 
 <!-- generated:counts -->
-- `references/guide.md`: authored gotchas (coordinate origins, fill vs color, z-order, variables, presets), the available tools and the 26 validator codes
+- `references/guide.md`: authored gotchas (coordinate origins, fill vs color, z-order, variables, presets), the available tools and the 28 validator codes
 - `references/elements.md`: field tables for all 15 element types, generated from the schema
-- `references/fonts.md`: 47 font families with their weights, generated from the font registry
+- `references/fonts.md`: 57 font families with their weights, generated from the font registry
 - `references/icons.md`: 1995 icon names, generated from the icon registry (open only when you need an icon)
 - `references/examples.md`: 2 complete golden example designs
 <!-- /generated:counts -->
