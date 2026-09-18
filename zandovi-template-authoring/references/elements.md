@@ -82,9 +82,9 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 |---|---|---|---|
 | `type` | line | yes |  |
 | `points` | number[] | yes |  |
-| `lineCap` | butt \| round \| square | yes |  |
-| `lineJoin` | miter \| round \| bevel | yes |  |
-| `dash` | number[] | yes |  |
+| `lineCap` | butt \| round \| square | yes | required even when unused; butt is the plain end. |
+| `lineJoin` | miter \| round \| bevel | yes | required even when unused; miter is the plain corner. |
+| `dash` | number[] | yes | dash and gap lengths in px, e.g. [8, 4]; required, [] for a solid line. |
 
 ## `arrow`
 
@@ -98,9 +98,9 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `points` | number[] | yes |  |
 | `pointerLength` | number | yes | >= 0 |
 | `pointerWidth` | number | yes | >= 0 |
-| `lineCap` | butt \| round \| square | yes |  |
-| `lineJoin` | miter \| round \| bevel | yes |  |
-| `dash` | number[] | yes |  |
+| `lineCap` | butt \| round \| square | yes | required even when unused; butt is the plain end. |
+| `lineJoin` | miter \| round \| bevel | yes | required even when unused; miter is the plain corner. |
+| `dash` | number[] | yes | dash and gap lengths in px, e.g. [8, 4]; required, [] for a solid line. |
 
 ## `star`
 
@@ -169,13 +169,13 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `fontSize` | number | yes | >= 1 |
 | `fontStyle` | normal \| italic | yes |  |
 | `fontWeight` | integer | yes | 100..900 |
-| `textDecoration` | none \| underline \| line-through | yes |  |
+| `textDecoration` | none \| underline \| line-through | yes | required by the schema but ignored by the export renderer (the designer canvas shows it); use none. |
 | `align` | left \| center \| right | yes |  |
 | `verticalAlign` | top \| middle \| bottom | yes |  |
 | `wrap` | word \| char \| none | yes |  |
-| `ellipsis` | boolean | yes |  |
+| `ellipsis` | boolean | yes | legacy truncation flag, required; overflowMode wins when set, so use false unless overflowMode is ellipsis. |
 | `lineHeight` | number | yes | >= 0 |
-| `letterSpacing` | number | yes |  |
+| `letterSpacing` | number | yes | extra spacing between characters in px; required, 0 for the font's default. |
 | `autoFit` | boolean | no |  |
 | `minFontSize` | number | no |  |
 | `maxFontSize` | number | no |  |
