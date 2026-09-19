@@ -18,7 +18,7 @@ Read `references/guide.md` before every design; open the others when the step ne
 - `references/elements.md`: field tables for all 15 element types, generated from the schema
 - `references/fonts.md`: 57 font families with their weights, generated from the font registry
 - `references/icons.md`: 1995 icon names, generated from the icon registry (open only when you need an icon)
-- `references/examples.md`: 2 complete golden example designs
+- `references/examples.md`: 3 complete golden example designs
 <!-- /generated:counts -->
 
 Counts above are generated from the Zandovi source at build time. Never state a font or icon count from memory; the API is authoritative and rejects unknown families and icon names.
