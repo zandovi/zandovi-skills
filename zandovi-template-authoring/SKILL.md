@@ -7,7 +7,7 @@ description: "Design Zandovi templates (coupons, gift cards, invitations, certif
 
 You are writing a Zandovi template: a `canvasData` JSON document (`schemaVersion`, `viewport`, `background`, `elements`) that Zandovi renders into PNG, JPEG, WebP or PDF, either once with variable values or in a batch from a CSV. The design is only done when it validates, a preview looks right and it is saved. With the Zandovi MCP server (`@zandovi/mcp`) that loop is `validate_design` → `preview_design` → `create_template` (or `update_template` for an existing template); over the REST API it is `POST /api/v1/designs/validate` → `POST /api/v1/designs/render` → `POST /api/v1/templates` (or `PATCH /api/v1/templates/{id}`), where the render's `renderReceipt` is passed to the write. Without either, check the design against the reference files yourself and hand the finished JSON to the user, who saves it from the Zandovi editor.
 
-`edit_template`, `search_stock_images` and `upload_image` are not yet available: use images already uploaded in the app (`zandovi://images/{id}`) or public `https://` URLs, and replace a whole design rather than patching parts of it.
+Images: `list_images` lists the organization's uploaded images and `upload_image` stores any public `https://` image URL (or a small inline file) as `zandovi://images/{id}`; uploads are PRIVATE unless `visibility: "SHARED"`, and teammates see a PRIVATE image as unresolved in the designer. `search_stock_images` (Unsplash, Pexels, Pixabay) is available only in the Claude.ai and ChatGPT connectors, not in `npx @zandovi/mcp`: pass a hit to `upload_image` unchanged so attribution is recorded; without it, put any public image URL in `src` or ingest it with `upload_image`.
 
 ## Reference files
 
@@ -32,6 +32,15 @@ Counts above are generated from the Zandovi source at build time. Never state a 
 5. **Validate.** Call `validate_design` (or `POST /api/v1/designs/validate`); it is free. Fix every error it returns (the `Validation codes` table in `references/guide.md` explains each code; the `fix_violations` prompt maps codes to guide sections) and repeat until `valid` is true. Without the tools, check the design against `references/guide.md` and `references/elements.md` yourself: every `fontFamily` and `iconName` exists in the reference lists, every variable has `isVariable` and `defaultValue`, nothing sits off the canvas, text fits its box.
 6. **Preview.** Call `preview_design` (or `POST /api/v1/designs/render`); it charges one API render. Look at the image for text that overflows, shapes off the canvas, weak contrast, stretched images; fix, validate and preview again. Three or four rounds is normal. Without the tools, reason about the render instead.
 7. **Save.** Call `create_template` with the final design, a name and the project the user chose (`list_projects`, or `create_project`); it renders once more and saves, and returns the template id, its variables and an `openInDesignerUrl` to hand to the user. Over the REST API, `POST /api/v1/templates` takes the design plus the `renderReceipt` from the preview. Without the tools, give the user the finished JSON and its variable list; a person saves it from the Zandovi editor.
+8. **Look before you render again.** To see how a saved template currently looks, call `get_template` with `includeThumbnail: true` (free, no quota: it attaches the thumbnail stored at the last save; over the REST API, `GET /api/v1/templates/{id}/thumbnail`); `generate_image` is for producing output, not for looking. `update_template` and `edit_template` already return the fresh preview from the render they paid for.
+
+## Start from a built-in template
+
+Zandovi ships a built-in template library, the same for every organization. When the brief names a category the library covers, check it before designing from scratch:
+
+1. **Browse.** Call `list_templates` with `source: "library"` (filter with `category`, an id from the result's `categories`, and `query`). Each item's id is a stable string such as `coupon-flash-sale`, never a UUID.
+2. **Inspect.** Call `get_template` on a library id with `includeCanvas: true` to see its full design, or without it for just the variables and preview.
+3. **Use it.** Either instantiate it as-is with `create_template(fromLibrary: id, projectId)` (no render, nothing charged; name and description default to the library template's), or adapt the design first: edit the JSON from step 2, then `create_template` the normal way with `design` instead of `fromLibrary`.
 
 ## Rules that are easy to get wrong
 
