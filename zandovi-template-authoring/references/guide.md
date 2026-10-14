@@ -32,7 +32,7 @@ Most elements use top-left origin: `x, y` is the top-left corner. Five types use
 
 ## Text
 
-- `autoFit: true` only shrinks: the renderer reduces `fontSize` down to `minFontSize` until the text fits, never grows it; set `maxFontSize` for a ceiling other than `fontSize`.
+- `autoFit: true` renders at the largest size from `minFontSize` up to `maxFontSize` (default: `fontSize`) at which the text fits. Without `maxFontSize` it only shrinks; set `maxFontSize` above `fontSize` only if short values should grow.
 - `overflowMode` (`clip`, `ellipsis`, `visible`) wins over the legacy boolean `ellipsis`; set both consistently.
 - Multi-line text uses `\n`. Uppercase the string itself; there is no `textTransform`.
 - Keep contrast readable; put a backing shape or shadow under text over photos.

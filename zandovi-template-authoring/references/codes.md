@@ -32,7 +32,7 @@
 | `FONT_WEIGHT_NOT_AVAILABLE` | warning | fontWeight is not offered by the font family; the renderer substitutes the nearest weight. |
 | `QR_LOGO_NOT_RENDERED` | warning | logoSrc, logoSize or logoPadding is set on a qrcode, but the renderer does not draw QR logos. |
 | `TEXT_EMPTY` | warning | A visible text element has blank text and no variable binding. |
-| `AUTOFIT_NO_MAX` | warning | autoFit is true without a maxFontSize to cap the fitted size. |
+| `AUTOFIT_NO_MAX` | warning | autoFit is true without a maxFontSize, so fontSize is the ceiling and the text can only shrink. |
 | `GROUP_EMPTY` | warning | A group has no children. |
 | `ELEMENT_OCCLUDED` | warning | A non-variable visible element is fully covered by a later opaque, unrotated rectangle or image. |
 | `GRADIENT_POINT_OUT_OF_RANGE` | warning | A gradient's startPoint, endPoint, centerPoint or radius lies outside 0..1; the renderer reads them as fractions of the painted box, so pixel values stretch the gradient far past the element and it paints as a flat colour. |
