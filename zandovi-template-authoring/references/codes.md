@@ -18,7 +18,8 @@
 | `FONT_NOT_AVAILABLE` | error | fontFamily is not one of the bundled fonts; the hint lists the closest available names. |
 | `GLYPH_FALLBACK` | warning | A character in text/defaultValue is not covered by fontFamily but is covered by the fallback chain, which draws it instead. |
 | `GLYPH_MISSING` | warning | A character in text/defaultValue is covered by neither fontFamily nor the fallback chain and renders as a missing-glyph box. |
-| `ICON_NOT_FOUND` | error | iconName is not one of the bundled Lucide icons; the hint lists the closest available names. |
+| `ICON_NOT_FOUND` | error | iconName is not a bundled Lucide icon and the element carries no usable iconGlyph. |
+| `ICON_GLYPH_INVALID` | error | iconGlyph does not match the allowed Lucide-shaped geometry (tags, attributes, ≤32 nodes, ≤2 KB). |
 | `COLOR_INVALID` | error | A fill, stroke, color, shadowColor or gradient stop is not a parseable CSS colour (#rgb, #rrggbb, #rrggbbaa, rgb(), rgba(), hsl(), hsla(), transparent or a named colour). |
 | `VARIABLE_NAME_INVALID` | error | variableName must match ^[A-Za-z_][A-Za-z0-9_]{0,63}$. |
 | `VARIABLE_FLAG_MISSING` | error | variableName is set without isVariable: true (text, qrcode, barcode) or isPlaceholder: true (image), so the binding is inert. |

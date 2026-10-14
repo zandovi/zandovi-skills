@@ -286,7 +286,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 ## `icon`
 
-Lucide icon named by iconName, drawn as strokes in iconColor and scaled to width by height.
+Lucide icon named by iconName, drawn as strokes in iconColor and scaled to width by height. iconGlyph: Frozen drawing of the icon, filled by the API on save. Server-managed: omit it.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
@@ -296,6 +296,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 | `iconName` | string | yes |  |
 | `iconColor` | string | yes |  |
 | `iconStrokeWidth` | number | yes | >= 0 |
+| `iconGlyph` | object | no | Frozen drawing of the icon, filled by the API on save. Server-managed: omit it. |
 
 ## Supporting types
 

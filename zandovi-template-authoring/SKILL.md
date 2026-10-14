@@ -15,7 +15,7 @@ Read `references/guide.md` before every design; open the others when the step ne
 
 <!-- generated:counts -->
 - `references/guide.md`: authored gotchas (coordinate origins, fill vs color, z-order, variables, presets) and the available tools
-- `references/codes.md`: the 29 validator codes with their severity and meaning, generated from the rule catalogue
+- `references/codes.md`: the 30 validator codes with their severity and meaning, generated from the rule catalogue
 - `references/elements.md`: field tables for all 15 element types, generated from the schema
 - `references/fonts.md`: 57 font families with their weights, generated from the font registry
 - `references/icons.md`: 1995 icon names, generated from the icon registry (open only when you need an icon)
