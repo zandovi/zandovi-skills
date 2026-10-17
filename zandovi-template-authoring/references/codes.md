@@ -25,6 +25,7 @@
 | `VARIABLE_FLAG_MISSING` | error | variableName is set without isVariable: true (text, qrcode, barcode) or isPlaceholder: true (image), so the binding is inert. |
 | `VARIABLE_MISSING_DEFAULT` | error | A variable element has no defaultValue, or it is blank; the default is what renders when no value is supplied. |
 | `VARIABLE_CONFLICT` | error | The same variableName is used on two elements of different type or with different validation rules. |
+| `VARIABLE_DEFAULT_MISMATCH` | warning | Elements of the same type share a variableName but have different defaults (defaultValue, data for a QR/barcode without one, defaultSrc); without a value each renders its own. |
 | `QR_DATA_EMPTY` | error | A non-variable qrcode has blank data. |
 | `BARCODE_PAYLOAD_INVALID` | error | A barcode's payload (data, or defaultValue for a variable barcode) does not fit its format (EAN13 13 digits, UPC 12, ITF14 14, CODE39 charset). |
 | `IMAGE_SRC_MISSING` | error | An image has a blank src and is not a placeholder (isPlaceholder: true). |

@@ -15,11 +15,12 @@ Read `references/guide.md` before every design; open the others when the step ne
 
 <!-- generated:counts -->
 - `references/guide.md`: authored gotchas (coordinate origins, fill vs color, z-order, variables, presets) and the available tools
-- `references/codes.md`: the 30 validator codes with their severity and meaning, generated from the rule catalogue
+- `references/variables.md`: template variables in full (binding, precedence, required and validation rules, render and batch values, a worked example)
+- `references/codes.md`: the 31 validator codes with their severity and meaning, generated from the rule catalogue
 - `references/elements.md`: field tables for all 15 element types, generated from the schema
 - `references/fonts.md`: 57 font families with their weights, generated from the font registry
 - `references/icons.md`: 1995 icon names, generated from the icon registry (open only when you need an icon)
-- `references/examples.md`: 3 complete golden example designs
+- `references/examples.md`: 4 complete golden example designs
 <!-- /generated:counts -->
 
 Counts above are generated from the Zandovi source at build time. Never state a font or icon count from memory; the API is authoritative and rejects unknown families and icon names.

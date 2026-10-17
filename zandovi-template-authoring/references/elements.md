@@ -159,7 +159,7 @@ Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFiel
 
 Text block wrapped inside width by height; fontFamily must be a bundled family and fill gives its colour.
 
-Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `textDecoration`.
+Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: `textDecoration`, `variableValidation.required`.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -400,7 +400,7 @@ One of: `SolidFill`, `LinearGradientFill`, `RadialGradientFill` (discriminated b
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `required` | boolean | no |  |
+| `required` | boolean | no | Ignored: neither the API nor the renderer reads it. Set the element's variableRequired instead. |
 | `minLength` | number | no |  |
 | `maxLength` | number | no |  |
 | `min` | number | no |  |

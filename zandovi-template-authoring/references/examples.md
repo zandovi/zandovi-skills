@@ -1409,3 +1409,326 @@ Luxury just-listed card with navy & gold palette, hero photo, property stats, an
   ]
 }
 ```
+
+## product-spotlight (1080x1080)
+
+Square product card with headphones photography, strike-through pricing, and add-to-cart button
+
+```json
+{
+  "schemaVersion": "1.0",
+  "viewport": {
+    "width": 1080,
+    "height": 1080,
+    "unit": "px",
+    "exportDpi": 96,
+    "outputIntent": "screen"
+  },
+  "background": {
+    "type": "solid",
+    "color": "#f8f9fa"
+  },
+  "elements": [
+    {
+      "id": "ps-name",
+      "type": "text",
+      "x": 80,
+      "y": 52,
+      "width": 920,
+      "height": 64,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#111827"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "Premium Wireless Headphones",
+      "fontFamily": "Montserrat",
+      "fontSize": 36,
+      "fontStyle": "normal",
+      "fontWeight": 700,
+      "textDecoration": "none",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1.2,
+      "letterSpacing": -0.5,
+      "isVariable": true,
+      "variableName": "product_name",
+      "defaultValue": "Premium Wireless Headphones",
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-price-old",
+      "type": "text",
+      "x": 80,
+      "y": 124,
+      "width": 920,
+      "height": 36,
+      "rotation": 0,
+      "opacity": 0.5,
+      "fill": {
+        "type": "solid",
+        "color": "#6b7280"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "$149.99",
+      "fontFamily": "Inter",
+      "fontSize": 22,
+      "fontStyle": "normal",
+      "fontWeight": 400,
+      "textDecoration": "line-through",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1,
+      "letterSpacing": 0,
+      "isVariable": true,
+      "variableName": "original_price",
+      "defaultValue": "$149.99",
+      "variableValidation": {
+        "pattern": "^\\$?\\d+(\\.\\d{2})?$"
+      },
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-price",
+      "type": "text",
+      "x": 80,
+      "y": 162,
+      "width": 920,
+      "height": 64,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#2563eb"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "$99.99",
+      "fontFamily": "Bebas Neue",
+      "fontSize": 60,
+      "fontStyle": "normal",
+      "fontWeight": 400,
+      "textDecoration": "none",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1,
+      "letterSpacing": 2,
+      "isVariable": true,
+      "variableName": "price",
+      "defaultValue": "$99.99",
+      "variableValidation": {
+        "pattern": "^\\$?\\d+(\\.\\d{2})?$"
+      },
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-rule",
+      "type": "line",
+      "x": 120,
+      "y": 232,
+      "width": 840,
+      "height": 2,
+      "rotation": 0,
+      "opacity": 0.5,
+      "fill": {
+        "type": "solid",
+        "color": "transparent"
+      },
+      "stroke": "#e5e7eb",
+      "strokeWidth": 2,
+      "points": [
+        0,
+        0,
+        840,
+        0
+      ],
+      "lineCap": "round",
+      "lineJoin": "round",
+      "dash": [],
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-badge",
+      "type": "rectangle",
+      "x": 840,
+      "y": 248,
+      "width": 160,
+      "height": 40,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#fef3c7"
+      },
+      "stroke": "#fbbf24",
+      "strokeWidth": 1,
+      "cornerRadius": 6,
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-badge-text",
+      "type": "text",
+      "x": 840,
+      "y": 254,
+      "width": 160,
+      "height": 32,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#92400e"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "BEST SELLER",
+      "fontFamily": "Oswald",
+      "fontSize": 16,
+      "fontStyle": "normal",
+      "fontWeight": 600,
+      "textDecoration": "none",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1.2,
+      "letterSpacing": 2,
+      "isVariable": true,
+      "variableName": "badge",
+      "defaultValue": "BEST SELLER",
+      "variableValidation": {
+        "maxLength": 14
+      },
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-photo",
+      "type": "image",
+      "x": 140,
+      "y": 248,
+      "width": 800,
+      "height": 580,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "transparent"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "src": "/images/templates/ecom-headphones-product.jpg",
+      "objectFit": "contain",
+      "cornerRadius": 12,
+      "isPlaceholder": true,
+      "variableName": "product_image",
+      "defaultSrc": "/images/templates/ecom-headphones-product.jpg",
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-sub",
+      "type": "text",
+      "x": 80,
+      "y": 852,
+      "width": 920,
+      "height": 40,
+      "rotation": 0,
+      "opacity": 0.75,
+      "fill": {
+        "type": "solid",
+        "color": "#6b7280"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "Free shipping on orders over $50",
+      "fontFamily": "Inter",
+      "fontSize": 20,
+      "fontStyle": "normal",
+      "fontWeight": 400,
+      "textDecoration": "none",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1.3,
+      "letterSpacing": 0,
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-cart-btn",
+      "type": "rectangle",
+      "x": 290,
+      "y": 920,
+      "width": 500,
+      "height": 72,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#111827"
+      },
+      "stroke": "#111827",
+      "strokeWidth": 0,
+      "cornerRadius": 12,
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "ps-cart-text",
+      "type": "text",
+      "x": 290,
+      "y": 936,
+      "width": 500,
+      "height": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "fill": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "stroke": "transparent",
+      "strokeWidth": 0,
+      "text": "Add to Cart",
+      "fontFamily": "Poppins",
+      "fontSize": 26,
+      "fontStyle": "normal",
+      "fontWeight": 600,
+      "textDecoration": "none",
+      "align": "center",
+      "verticalAlign": "top",
+      "wrap": "none",
+      "ellipsis": false,
+      "lineHeight": 1.2,
+      "letterSpacing": 0.5,
+      "draggable": true,
+      "visible": true,
+      "locked": false
+    }
+  ]
+}
+```
