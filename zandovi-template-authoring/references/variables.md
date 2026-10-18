@@ -9,7 +9,7 @@ The full reference for template variables: how an element is bound, which value 
 | `text` | `isVariable: true` | `variableName` | `defaultValue` (non-blank) | `text` |
 | `qrcode` | `isVariable: true` | `variableName` | non-empty `defaultValue`, else `data` | `data` |
 | `barcode` | `isVariable: true` | `variableName` | non-empty `defaultValue`, else `data` | `data` |
-| `image` | `isPlaceholder: true` | `variableName` | `defaultSrc` (optional) | `src` |
+| `image` | `isPlaceholder: true` | `variableName` | non-empty `defaultSrc`, else `src` | `src` |
 
 - `variableName` alone is inert: without the flag nothing is substituted, and validation reports `VARIABLE_FLAG_MISSING`.
 - Names match `^[A-Za-z_][A-Za-z0-9_]{0,63}$` (`VARIABLE_NAME_INVALID`) and are case-sensitive.
@@ -30,7 +30,7 @@ The element's `text` is never used for a bound text variable: a text variable wi
 
 - An absent key, `""` and JSON `null` behave the same: the value is missing and the default renders. (MCP tools accept strings only; `null` matters to direct API callers.)
 - Whitespace-only text (`" "`) is a real value: it is drawn as sent and satisfies a required variable.
-- `variableRequired` (text) defaults to `true`. QR and barcode variables are always required. An image variable is required exactly when it has no `defaultSrc`.
+- `variableRequired` (text) defaults to `true`. QR and barcode variables are always required. An image variable is required only when both `defaultSrc` and `src` are empty.
 - A non-empty default satisfies a required variable. Only a required variable without one rejects a missing value: `"Required variable is missing"`.
 - Defaults are not re-validated at render time. The checks below apply to every supplied value, including one equal to the default (so `get_template`'s `exampleVariables` sent back unchanged are checked like any other values).
 
@@ -110,7 +110,7 @@ Built on example `product-spotlight` (`get_design_reference` topic `example:prod
 ]}
 ```
 
-6. Two errors. If `ps-photo` had no `defaultSrc`, `product_image` would be required; `generate_image` with `{"price": "79.5"}` then returns, with nothing rendered or charged:
+6. Two errors. If `ps-photo` had neither `defaultSrc` nor `src`, `product_image` would be required; `generate_image` with `{"price": "79.5"}` then returns, with nothing rendered or charged:
 
 ```json
 {"error": "VALIDATION_ERROR", "message": "Variable validation failed", "details": {"product_image": "Required variable is missing", "price": "Does not match required pattern"}}
