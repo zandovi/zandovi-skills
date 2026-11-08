@@ -429,37 +429,6 @@ Clean white layout with a circular guest photo, orange new-episode badge, guest 
       "locked": false
     },
     {
-      "id": "gs-photo-hint",
-      "type": "text",
-      "x": 340,
-      "y": 290,
-      "width": 400,
-      "height": 60,
-      "rotation": 0,
-      "opacity": 0.4,
-      "fill": {
-        "type": "solid",
-        "color": "#9ca3af"
-      },
-      "stroke": "transparent",
-      "strokeWidth": 0,
-      "text": "Guest photo",
-      "fontFamily": "Inter",
-      "fontSize": 24,
-      "fontStyle": "normal",
-      "fontWeight": 500,
-      "textDecoration": "none",
-      "align": "center",
-      "verticalAlign": "top",
-      "wrap": "none",
-      "ellipsis": false,
-      "lineHeight": 1.2,
-      "letterSpacing": 0,
-      "draggable": true,
-      "visible": true,
-      "locked": false
-    },
-    {
       "id": "gs-badge-bg",
       "type": "rectangle",
       "x": 64,
