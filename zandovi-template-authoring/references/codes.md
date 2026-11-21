@@ -36,5 +36,5 @@
 | `AUTOFIT_NO_MAX` | warning | autoFit is true without a maxFontSize, so fontSize is the ceiling and the text can only shrink. |
 | `GROUP_EMPTY` | warning | A group has no children. |
 | `ELEMENT_OCCLUDED` | warning | A non-variable visible element is fully covered by a later opaque, unrotated rectangle or image. |
-| `GRADIENT_POINT_OUT_OF_RANGE` | warning | A gradient's startPoint, endPoint, centerPoint or radius lies outside 0..1; the renderer reads them as fractions of the painted box, so pixel values stretch the gradient far past the element and it paints as a flat colour. |
+| `GRADIENT_POINT_OUT_OF_RANGE` | warning | A gradient point looks like pixels: a linear startPoint or endPoint lies more than one box diagonal from the box centre, or a radial centerPoint or radius lies outside 0..1. The renderer reads them as fractions of the painted box, so pixel values stretch the gradient far past the element and it paints as a flat colour. |
 <!-- /generated:rules -->

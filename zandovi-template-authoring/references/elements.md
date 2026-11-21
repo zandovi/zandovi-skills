@@ -361,7 +361,7 @@ One of: `SolidFill`, `LinearGradientFill`, `RadialGradientFill` (discriminated b
 |---|---|---|---|
 | `type` | linear | yes |  |
 | `colorStops` | GradientColorStop[] | yes |  |
-| `startPoint` | Point2D | yes | normalised 0..1 fractions of the painted box (element or canvas), not pixels; {x: 0, y: 0} is its top-left corner, {x: 1, y: 1} its bottom-right. |
+| `startPoint` | Point2D | yes | normalised 0..1 fractions of the painted box (element or canvas), not pixels; {x: 0, y: 0} is its top-left corner, {x: 1, y: 1} its bottom-right. May sit just outside 0..1 (a CSS-style diagonal on a non-square box starts and ends past it), but never more than one box diagonal from its centre. |
 | `endPoint` | Point2D | yes | normalised 0..1 fractions of the painted box, like startPoint; a top-to-bottom gradient runs from {x: 0, y: 0} to {x: 0, y: 1}. |
 
 ### `RadialGradientFill`
