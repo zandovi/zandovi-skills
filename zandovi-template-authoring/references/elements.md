@@ -314,9 +314,9 @@ Design-space size in 96-DPI pixels plus unit, exportDpi and outputIntent; copy a
 
 ### `BackgroundConfig`
 
-The canvas backdrop painted before every element: a solid colour, a gradient or an image with optional overlay.
+The canvas backdrop painted before every element: a solid colour, a gradient, an image with optional overlay, or transparent.
 
-One of: `SolidBackground`, `GradientBackground`, `ImageBackground` (discriminated by `type`).
+One of: `SolidBackground`, `GradientBackground`, `ImageBackground`, `TransparentBackground` (discriminated by `type`).
 
 ### `SolidBackground`
 
@@ -341,6 +341,14 @@ One of: `SolidBackground`, `GradientBackground`, `ImageBackground` (discriminate
 | `fit` | cover \| contain \| stretch | no |  |
 | `opacity` | number | no | 0..1 |
 | `overlay` | object | no |  |
+
+### `TransparentBackground`
+
+No backdrop: PNG and WebP keep the alpha channel, JPEG fills white. Video overlays use it.
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `type` | transparent | yes |  |
 
 ### `FillConfig`
 
