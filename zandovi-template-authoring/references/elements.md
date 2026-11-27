@@ -142,18 +142,18 @@ Origin: centre. Fields below are in addition to `BaseElement`. unsupportedFields
 
 ## `curvedRectangle`
 
-Rectangle with one side bowed inward or outward by curveDepth; use for ticket stubs and wave dividers.
+Rectangle with one whole side replaced by a curve that bows inward or outward; use for ticket stubs, wave dividers and banner ends.
 
 Origin: top-left. Fields below are in addition to `BaseElement`. unsupportedFields: none.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `type` | curvedRectangle | yes |  |
-| `curvedSide` | top \| right \| bottom \| left | yes |  |
-| `curveType` | arc \| bezier | yes |  |
-| `curveDepth` | number | yes | 0..100 |
-| `curveDirection` | inward \| outward | yes |  |
-| `cornerRadius` | number | yes | >= 0 |
+| `curvedSide` | top \| right \| bottom \| left | yes | the side replaced by the curve. The curve spans that whole side, corner to corner: one bow, not a notch (use circles for punch-holes). |
+| `curveType` | arc \| bezier | yes | arc is a quadratic curve that peaks at the midpoint; bezier is a cubic curve, flatter and fuller across the middle. Neither is a circular arc. |
+| `curveDepth` | number | yes | 0..100; percent of the size across the curve (width for left/right, height for top/bottom), not pixels. It sets the curve's control point, so the visible bulge at the midpoint is curveDepth/100 x that size x 0.5 for arc, x 0.75 for bezier: a right side on a 320-wide box at curveDepth 20 bows 32 px with arc, 48 px with bezier. Below about 5 it barely shows. |
+| `curveDirection` | inward \| outward | yes | inward cuts the curve into the box (concave); outward bulges past the box's edge (convex), outside width and height, so leave room for the bulge and keep it on the canvas. |
+| `cornerRadius` | number | yes | >= 0; rounds only the two corners on the side opposite curvedSide; the curved side's ends stay sharp. Capped at half the smaller of width and height. |
 
 ## `text`
 
